@@ -1,0 +1,111 @@
+bank-customer-churn-analysis/
+│
+├── data/                               # Quản lý file dữ liệu cục bộ (Local Staging)
+│   ├── raw/                            # Chứa file csv/excel thô ban đầu
+│   │   └── bank_churn_raw.csv
+│   └── processed/                      # Chứa file xuất dữ liệu sạch (nếu cần back-up)
+│       └── bank_churn_cleaned.csv
+│
+├── sql/                                # Chứa toàn bộ Script SQL (Data Lake & DWH)
+│   ├── 01_datalake_setup.sql           # Schema `datalake_db` & bảng `raw_bank_churn`
+│   ├── 02_dwh_schema_setup.sql         # Schema `datawarehouse_db` (Bảng Fact & Dim / Analytics View)
+│   ├── 03_data_cleaning_and_etl.sql    # Query transform dữ liệu từ Lake sang DWH
+│   └── 04_analytical_queries.sql       # Các câu SQL truy vấn Insight & KPIs
+│
+├── notebooks/                          # Chứa file Jupyter Notebook làm việc
+│   ├── 01_data_ingestion.ipynb         # Nạp data thô từ CSV vào MySQL Data Lake
+│   └── 02_eda_churn_analysis.ipynb     # Phân tích EDA & Khám phá Insight
+│
+├── reports/                            # Chứa file báo cáo & Dashboard bàn giao
+│   ├── Bank_Churn_Report.xlsx          # File Excel (Power Query, Pivot, Customer Lookup)
+│   └── Bank_Churn_Dashboard.pbix       # File Power BI Dashboard
+│
+├── src/                                # Mã nguồn Python dùng chung (Reusable Modules)
+│   ├── __init__.py
+│   ├── db_connection.py                # Hàm get_db_engine(), connect_lake(), connect_dwh()
+│   └── utils.py                        # Hàm load_data, helper functions
+│
+├── docs/                               # Tài liệu dự án
+│   ├── project_scope.md                # Ghi chú REQ-1 & REQ-2 (Bối cảnh, KPIs, Deliverables)
+│   └── data_dictionary.md              # Giải thích ý nghĩa từng cột dữ liệu
+│
+├── .env                                # Biến môi trường (DB Credentials: host, user, password)
+├── .gitignore                          # Chặn push data thô, file .env, cache lên Git
+├── README.md                           # File tổng quan dự án (Đóng gói Portfolio)
+└── requirements.txt                    # Danh sách thư viện Python (pandas, sqlalchemy, pymysql...)
+
+
+
+Phase 1: Business Requirement & Scope
+[REQ-1] Define Business Questions & Project Objectives
+
+Nội dung: Xác định bài toán Churn Rate, danh sách câu hỏi cốt lõi và KPI mục tiêu.
+
+[REQ-2] Define Success Metrics & Deliverables
+
+Nội dung: Chốt các kết quả bàn giao (SQL script, Excel report, Power BI Dashboard, Recommendations).
+
+Phase 2: Data Collection & Ingestion
+[DAT-1] Inspect Raw Data & Validate Schema
+
+Nội dung: Dùng Python/Pandas kiểm tra sơ bộ kiểu dữ liệu, missing values và tổng quan 10,000 dòng dữ liệu thô.
+
+[DAT-2] Set up MySQL Database & Load Raw Data
+
+Nội dung: Tạo database bank_analytics_db và nạp dữ liệu thô vào bảng raw_bank_churn trong MySQL.
+
+Phase 3: SQL Engineering & Data Transformation
+[SQL-1] Data Cleaning & Deduplication
+
+Nội dung: Viết SQL kiểm tra bản ghi trùng, xử lý null và chuẩn hóa định dạng các cột.
+
+[SQL-2] Feature Engineering & Category Grouping
+
+Nội dung: Viết SQL gộp nhóm độ tuổi (Age Group), phân khúc số dư (Balance Group), gắn nhãn rủi ro bằng CASE WHEN.
+
+[SQL-3] Build Analytics Views & Window Functions
+
+Nội dung: Tạo các VIEW dữ liệu sạch chuẩn bị nạp vào Excel và Power BI; tính xếp hạng bằng Window Functions (RANK(), AVG() OVER()).
+
+Phase 4: Exploratory Data Analysis (EDA) & Insights Discovery
+[EDA-1] Analyze Demographic Impact on Churn Rate
+
+Nội dung: Truy vấn SQL phân tích mối liên hệ giữa Churn với Độ tuổi, Giới tính, Vùng miền.
+
+[EDA-2] Analyze Behavioral & Product Metrics
+
+Nội dung: Đánh giá tác động của NumOfProducts, IsActiveMember, CreditScore tới tỷ lệ rời bỏ.
+
+[EDA-3] Synthesize Key Insights & Financial Loss
+
+Nội dung: Tổng hợp các phát hiện quan trọng và tính toán tổng số tiền gửi bị mất do Churn.
+
+Phase 5: Reporting & Dashboard Development
+[XLS-1] Connect MySQL to Excel via Power Query
+
+Nội dung: Nạp dữ liệu từ MySQL View vào Excel qua Power Query.
+
+[XLS-2] Build Pivot Tables & Financial What-If Model
+
+Nội dung: Tạo Pivot Tables tổng hợp và xây dựng bảng mô phỏng tài chính "What-If Analysis".
+
+[XLS-3] Create Customer Lookup & Risk Scoring Sheet
+
+Nội dung: Dùng XLOOKUP và Conditional Formatting dựng trang tra cứu rủi ro khách hàng theo Customer_ID.
+
+[PBI-1] Build Data Model & DAX Measures in Power BI
+
+Nội dung: Tạo Star Schema, viết các hàm DAX (Churn Rate %, Total Lost Balance, Active Customer Count).
+
+[PBI-2] Design Interactive Executive Dashboard
+
+Nội dung: Thiết kế giao diện Dashboard 3 phần (Overview KPIs, Deep-dive Charts, Drill-through Customer Table).
+
+Phase 6: Business Solutions & Final Documentation
+[DOC-1] Draft Actionable Business Recommendations
+
+Nội dung: Đề xuất 4 chiến lược giữ chân khách hàng (Gói hưu trí 40-50t, cấu trúc phí 3+ sản phẩm, cảnh báo tự động KH thụ động).
+
+[DOC-2] Finalize Project Documentation & GitHub Repo
+
+Nội dung: Đóng gói source code SQL, Notebook, file Excel, file .pbix và viết README tổng kết dự án.
