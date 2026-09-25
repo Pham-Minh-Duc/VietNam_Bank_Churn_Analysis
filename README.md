@@ -27,3 +27,4 @@
 ##### 2_eda_churn_analysis.ipynb: File Jupyter Notebook chứa câu lệnh Python/SQL phân tích EDA.
 ##### 3_Bank_Churn_Report.xlsx: Báo cáo Excel tĩnh gồm Pivot Tables, mô phỏng tài chính What-If và bộ công cụ tra cứu rủi ro Customer_Lookup.
 ##### 4_Bank_Churn_Dashboard.pbix: Dashboard Power BI tương tác đa chiều.
+# test change
