@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS Data_Warehouse;
 
 USE Data_Warehouse;
 
-CREATE TABLE IF NOT EXISTS bank_churn_data(
+CREATE TABLE IF NOT EXISTS fact_bank_churn(
 	id INT PRIMARY KEY,
     full_name VARCHAR(255),
     credit_score INT,

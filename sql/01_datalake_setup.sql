@@ -2,7 +2,7 @@ CREATE DATABASE IF NOT EXISTS Data_lake;
 
 USE Data_lake;
 
-CREATE TABLE IF NOT EXISTS bank_churn_raw_data(
+CREATE TABLE IF NOT EXISTS raw_bank_churn(
 	id INT PRIMARY KEY,
     full_name VARCHAR(255),
     credit_score INT,

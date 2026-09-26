@@ -109,3 +109,47 @@ Nội dung: Đề xuất 4 chiến lược giữ chân khách hàng (Gói hưu t
 [DOC-2] Finalize Project Documentation & GitHub Repo
 
 Nội dung: Đóng gói source code SQL, Notebook, file Excel, file .pbix và viết README tổng kết dự án.
+
+
+
+
+1. Thông tin cá nhân & Nhân khẩu học (Demographics)
+
+Tên cột (Column)	Dịch nghĩa	Giải thích nghiệp vụ
+
+id   Mã định danh khách hàng   Mã duy nhất (Unique ID) để phân biệt từng khách hàng trong hệ thống.   
+full_name   Họ và tên đầy đủ   Tên tiếng Việt đầy đủ của khách hàng.   
+gender   Giới tính   Giới tính khách hàng (male: Nam, female: Nữ).   
+age   Tuổi   Số tuổi hiện tại của khách hàng (tính theo năm).   
+occupation   Nghề nghiệp   Công việc / Ngành nghề hiện tại của khách hàng.   
+origin_province   Tỉnh/Thành quê quán   Quê quán hoặc tỉnh/thành phố nguyên quán của khách hàng.   
+address   Địa chỉ thường trú   Quận/Huyện đang sinh sống (Lấy mẫu tại khu vực TP. Hồ Chí Minh).   
+married   Tình trạng hôn nhân   Quy đổi theo mã số: 0 = Độc thân (Single), 1 = Đã kết hôn (Married), 2 = Ly hôn (Divorced), 3 = Góa (Widowed).   
+
+2. Thông tin Tài chính & Tài khoản (Financial & Account)
+
+Tên cột (Column)     Dịch nghĩa  Giải thích nghiệp vụ
+monthly_ir   Thu nhập hàng tháng   Mức thu nhập hàng tháng của khách hàng (đơn vị: VNĐ).   
+balance   Số dư tài khoản   Tổng số dư hiện có trong tài khoản ngân hàng (đơn vị: VNĐ).   
+credit_sco   Điểm tín dụng   Điểm đánh giá mức độ uy tín tài chính, thang điểm từ 300 – 800.   
+tenure_ye   Thâm niên gắn bó   Số năm khách hàng đã mở và sử dụng dịch vụ tại ngân hàng.   
+created_date   Ngày mở tài khoản   Thời điểm tài khoản của khách hàng được khởi tạo lần đầu.   
+
+3. Tương tác & Sử dụng Dịch vụ (Behavior & Usage)
+Tên cột (Column)     Dịch nghĩa   Giải thích nghiệp vụ
+nums_card   Số lượng thẻ ngân hàng   Tổng số thẻ (ATM, Debit, Credit) khách hàng đang sở hữu.   
+nums_service   Số lượng dịch vụ   Tổng số sản phẩm/dịch vụ ngân hàng đang dùng (ví dụ: Tiết kiệm, Vay, SMS Banking, Mobile Banking...).   
+last_transaction_month   Giá trị giao dịch tháng gần nhất   Tổng số tiền khách hàng đã giao dịch trong tháng vừa qua (đơn vị: VNĐ).   
+active_member   Trạng thái hoạt động   Khách hàng có phát sinh giao dịch trong 90 ngày qua không (True = Có hoạt động, False = Ngủ đông).   
+last_active_date   Ngày hoạt động gần nhất   Ngày gần đây nhất khách hàng thực hiện một thao tác/giao dịch.   
+digital_behavior   Hành vi sử dụng kênh   Kênh giao dịch ưa thích: offline (tại phòng giao dịch), mobile (ứng dụng ngân hàng), hybrid (kết hợp cả hai).   
+
+4. Chỉ số Phân khúc & Đánh giá Rủi ro (Analytics & ML Features)
+Tên cột (Column)     Dịch nghĩa   Giải thích nghiệp vụ
+exit   Nhãn rời bỏ (Churn label)   Biến mục tiêu (Target variable): True = Đã hủy tài khoản / rời bỏ ngân hàng, False = Còn ở lại.   
+customer_segment   Hạng phân khúc khách hàng   Phân loại theo tài sản/tiềm năng: Mass (Phổ thông), Emerging (Đang phát triển), Affluent (Khá giả), Priority (Ưu tiên/VIP).   
+engagement_score   Điểm số gắn kết   Thang điểm từ 0 – 100 đánh giá mức độ tương tác dựa trên số sản phẩm và tần suất sử dụng.   
+loyalty_level   Hạng thân thiết   Cấp độ trung thành dựa trên điểm gắn kết: Bronze (Đồng), Silver (Bạc), Gold (Vàng), Platinum (Bạch kim).   
+risk_score   Điểm số rủi ro tổng hợp   Điểm đánh giá nguy cơ rời bỏ dịch vụ, dạng số thập phân từ 0 – 1.   
+risk_segment   Nhóm phân loại rủi ro   Quy đổi từ risk_score thành 3 mức: Low (Thấp), Medium (Trung bình), High (Cao).   
+cluster_group   Nhóm phân tích cụm   Nhãn phân cụm tập khách hàng được tự động tạo ra từ thuật toán KMeans (với n_clusters=4, tương ứng 4 nhóm hành vi).
