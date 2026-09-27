@@ -119,7 +119,6 @@ END AS calculated_risk_segment
 
 FROM fact_bank_churn c;
 
-SELECT f.customer_id, v.age_group, .balance_group, v.calculated_risk_segment, f.exited 
-FROM v_bank_churn_transformed v
-JOIN fact_bank_churn f ON 
+SELECT id, age_group, balance_group, calculated_risk_segment, `exit`
+FROM v_bank_churn_transformed
 LIMIT 10;
