@@ -69,5 +69,6 @@ Việc thiếu một hệ thống theo dõi rủi ro tập trung khiến bộ ph
 ---
 
 ## 🔗 Quick Access & Interactive Resources
+- 🎯 **Jira Project Board (Agile Task Tracking):** [View Jira Kanban Board](https://minhduck.atlassian.net/jira/software/projects/KAN/boards/2?filter=&groupBy=none)
 - 📊 **Live Financial & Pivot Model (Google Sheets):** [View Live Dashboard](https://docs.google.com/spreadsheets/d/1F1jtjFdicCSO-IEV_Mwm4GL5nalJ68-FpJ1Y-bmoWq4/edit?hl=vi&gid=1736678425#gid=1736678425)
 - 📋 **Executive Summary Report:** [Read Full Report](reports/executive_summary.md)
